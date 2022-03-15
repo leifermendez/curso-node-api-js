@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node ./app.js",
     "start:prod": "pm2 delete all && pm2 start ./app.js --name=app",
-    "demo":"jest --ci --json --coverage --testLocationInResults --outputFile=report.json",
     "dev": "nodemon ./app.js",
     "test": "cross-env NODE_ENV=test jest --silent --coverage --runInBand",
     "test:watch": "cross-env NODE_ENV=test jest --coverage --watch --silent --runInBand"
