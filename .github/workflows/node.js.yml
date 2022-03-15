@@ -1,24 +1,30 @@
-name: Push-to-EC2
+name: CI/CD counter app
 
-# Trigger deployment only on push to master branch
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
-
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
+      - uses: actions/checkout@v2 
+      - name: Deploy in EC2
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+            PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY  }}
+            HOSTNAME : ${{ secrets.HOST }}
+            USER_NAME : ${{ secrets.USERNAME   }}
+            
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          
+            #Now we have got the access of EC2 and we will start the deploy .
+            cd /home/ubuntu/build-app &&
+            git checkout master &&
+            git fetch --all &&
+            git reset --hard origin/master &&
+            git pull origin master &&
+            npm ci && npm start
+          '
