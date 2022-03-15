@@ -24,8 +24,8 @@ jobs:
         run: npm test && echo ::set-output name=things::$(grep "FAIL" test-output.log | wc -l)
         id: counter
         shell: bash 
-      - run: echo "There's a thing in my code!"
-        if:  steps.counter.outputs.things == '0'
+      - run: echo "ERROR!"
+        if:  steps.counter.outputs.things !== '0'
   deploy:
     runs-on: ubuntu-latest
     needs: [test]
