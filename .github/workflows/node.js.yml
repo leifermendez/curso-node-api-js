@@ -21,7 +21,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           
             #Now we have got the access of EC2 and we will start the deploy .
-            cd /home/ubuntu/build-app &&
+            cd /home/ubuntu &&
             git checkout master &&
             git fetch --all &&
             git reset --hard origin/master &&
