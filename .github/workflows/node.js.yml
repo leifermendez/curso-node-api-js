@@ -26,5 +26,5 @@ jobs:
             git fetch --all &&
             git reset --hard origin/master &&
             git pull origin master &&
-            npm ci && npm start
+            npm ci && npm start:prod
           '
