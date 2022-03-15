@@ -39,6 +39,7 @@ jobs:
           
             #Now we have got the access of EC2 and we will start the deploy .
             cd /home/ubuntu/curso-node-api-js &&
+            rm -rf node_modules &&
             git checkout master &&
             git fetch --all &&
             git reset --hard origin/master &&
