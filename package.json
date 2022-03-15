@@ -7,7 +7,7 @@
     "start": "node ./app.js",
     "start:prod": "pm2 delete all && pm2 start ./app.js --name=app",
     "dev": "nodemon ./app.js",
-    "test": "cross-env NODE_ENV=test jest --silent --coverage --runInBand --no-color 2>test-output.log",
+    "test": "cross-env NODE_ENV=test jest --silent --runInBand --no-color 2>test-output.log",
     "test:watch": "cross-env NODE_ENV=test jest --coverage --watch --silent --runInBand"
   },
   "keywords": [],
