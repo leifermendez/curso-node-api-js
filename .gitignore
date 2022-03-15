@@ -1,5 +1,6 @@
 node_modules/
 .env
+test-output.log
 storage/*
 !storage/.gitkeep
 coverage/
