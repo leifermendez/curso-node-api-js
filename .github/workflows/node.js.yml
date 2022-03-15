@@ -21,7 +21,7 @@ jobs:
       - name: Run test
         env:
             DB_URI: ${{ secrets.DB_URI_TEST  }}
-      - run: npm test
+        run: npm test
   deploy:
     runs-on: ubuntu-latest
     needs: [test]
