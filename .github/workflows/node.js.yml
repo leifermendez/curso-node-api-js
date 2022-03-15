@@ -20,7 +20,7 @@ jobs:
         run: npm ci && cp .env.example .env
       - name: Run test
         env:
-            DB_URI: ${{ secrets.DB_URI_TEST  }}
+            DB_URI_TEST: ${{ secrets.DB_URI_TEST  }}
         run: npm test
   deploy:
     runs-on: ubuntu-latest
