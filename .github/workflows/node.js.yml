@@ -21,8 +21,7 @@ jobs:
       - name: Run test
         env:
             DB_URI_TEST: ${{ secrets.DB_URI_TEST  }}
-        run: npm test
-        run: echo ::set-output name=things::$(grep "FAIL" test-output.log | wc -l)
+        run: npm test && echo ::set-output name=things::$(grep "FAIL" test-output.log | wc -l)
         id: counter
         shell: bash 
       - run: echo "There's a thing in my code!"
