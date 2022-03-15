@@ -41,5 +41,8 @@
       "/node_modules/"
     ],
     "coverageReporters":["json","html"]
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
